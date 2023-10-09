@@ -24,15 +24,15 @@ public class AccountController {
     public ResponseAccountDto createAccount(@RequestBody RequestAccountDto accountDto) {
         return accountService.createAccount(accountDto);
     }
-    @PatchMapping
+    @PatchMapping("/deposit")
     public ResponseAccountDto deposit(@RequestBody DepositDto depositDto) {
         return accountService.deposit(depositDto);
     }
-    @PatchMapping
+    @PatchMapping("/withdraw")
     public ResponseAccountDto withdraw(@RequestBody WithdrawDto withdrawDto) {
         return accountService.withdraw(withdrawDto);
     }
-    @PatchMapping
+    @PatchMapping("/transfer")
     public ResponseAccountDto transfer(@RequestBody TransferDto transferDto) {
         return accountService.transfer(transferDto);
     }
