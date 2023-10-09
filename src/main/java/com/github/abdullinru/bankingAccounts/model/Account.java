@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private double balance;
     private int pinCode;
