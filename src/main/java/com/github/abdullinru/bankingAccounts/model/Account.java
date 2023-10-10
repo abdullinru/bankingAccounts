@@ -10,7 +10,7 @@ public class Account {
     private Long id;
     private String name;
     private double balance;
-    private int pinCode;
+    private String pinCode;
 
     public Account() {
 
@@ -40,11 +40,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public int getPinCode() {
+    public String getPinCode() {
         return pinCode;
     }
 
-    public void setPinCode(int pinCode) {
+    public void setPinCode(String pinCode) {
         this.pinCode = pinCode;
     }
 }

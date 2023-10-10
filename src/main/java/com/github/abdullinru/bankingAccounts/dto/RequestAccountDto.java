@@ -3,7 +3,7 @@ package com.github.abdullinru.bankingAccounts.dto;
 public class RequestAccountDto {
     private String name;
     private double balance;
-    private int pinCode;
+    private String pinCode;
 
     public String getName() {
         return name;
@@ -13,7 +13,7 @@ public class RequestAccountDto {
         return balance;
     }
 
-    public int getPinCode() {
+    public String getPinCode() {
         return pinCode;
     }
 }

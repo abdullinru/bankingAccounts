@@ -3,7 +3,7 @@ package com.github.abdullinru.bankingAccounts.dto;
 public class WithdrawDto {
     private long accountId;
     private double amount;
-    private int pinCode;
+    private String pinCode;
 
     public long getAccountId() {
         return accountId;
@@ -13,7 +13,7 @@ public class WithdrawDto {
         return amount;
     }
 
-    public int getPinCode() {
+    public String getPinCode() {
         return pinCode;
     }
 }

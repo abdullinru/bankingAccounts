@@ -4,7 +4,7 @@ public class TransferDto {
     private long senderId;
     private long recipientId;
     private double transferAmount;
-    private int pinCode;
+    private String pinCode;
 
     public long getSenderId() {
         return senderId;
@@ -18,7 +18,7 @@ public class TransferDto {
         return transferAmount;
     }
 
-    public int getPinCode() {
+    public String getPinCode() {
         return pinCode;
     }
 }
