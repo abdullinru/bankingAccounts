@@ -16,4 +16,16 @@ public class WithdrawDto {
     public String getPinCode() {
         return pinCode;
     }
+
+    public void setAccountId(long accountId) {
+        this.accountId = accountId;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setPinCode(String pinCode) {
+        this.pinCode = pinCode;
+    }
 }

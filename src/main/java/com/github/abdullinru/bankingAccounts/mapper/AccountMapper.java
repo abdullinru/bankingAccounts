@@ -1,12 +1,9 @@
 package com.github.abdullinru.bankingAccounts.mapper;
 
-import com.github.abdullinru.bankingAccounts.dto.RequestAccountDto;
-import com.github.abdullinru.bankingAccounts.dto.ResponseAccountDto;
+import com.github.abdullinru.bankingAccounts.dto.*;
 import com.github.abdullinru.bankingAccounts.model.Account;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

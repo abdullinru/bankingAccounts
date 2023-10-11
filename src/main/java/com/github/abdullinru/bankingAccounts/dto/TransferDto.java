@@ -21,4 +21,5 @@ public class TransferDto {
     public String getPinCode() {
         return pinCode;
     }
+
 }
