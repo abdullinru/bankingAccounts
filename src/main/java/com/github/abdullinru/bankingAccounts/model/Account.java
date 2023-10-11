@@ -2,6 +2,8 @@ package com.github.abdullinru.bankingAccounts.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "accounts")
 public class Account {
@@ -9,7 +11,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private double balance;
+    private BigDecimal balance;
     private String pinCode;
 
     public Account() {
@@ -32,11 +34,11 @@ public class Account {
         this.name = name;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

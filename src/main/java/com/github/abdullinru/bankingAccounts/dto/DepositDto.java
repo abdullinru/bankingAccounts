@@ -1,13 +1,15 @@
 package com.github.abdullinru.bankingAccounts.dto;
 
+import java.math.BigDecimal;
+
 public class DepositDto {
     private long accountId;
-    private double amount;
+    private BigDecimal amount;
 
     public long getAccountId() {
         return accountId;
     }
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -15,7 +17,7 @@ public class DepositDto {
         this.accountId = accountId;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }

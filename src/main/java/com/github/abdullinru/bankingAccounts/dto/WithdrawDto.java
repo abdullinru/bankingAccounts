@@ -1,15 +1,17 @@
 package com.github.abdullinru.bankingAccounts.dto;
 
+import java.math.BigDecimal;
+
 public class WithdrawDto {
     private long accountId;
-    private double amount;
+    private BigDecimal amount;
     private String pinCode;
 
     public long getAccountId() {
         return accountId;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -21,7 +23,7 @@ public class WithdrawDto {
         this.accountId = accountId;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

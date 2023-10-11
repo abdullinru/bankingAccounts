@@ -1,14 +1,16 @@
 package com.github.abdullinru.bankingAccounts.dto;
 
+import java.math.BigDecimal;
+
 public class ResponseAccountDto {
     private String name;
-    private double balance;
+    private BigDecimal balance;
 
     public String getName() {
         return name;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
@@ -16,7 +18,7 @@ public class ResponseAccountDto {
         this.name = name;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 }

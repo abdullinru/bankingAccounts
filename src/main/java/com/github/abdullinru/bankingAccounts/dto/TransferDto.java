@@ -1,9 +1,11 @@
 package com.github.abdullinru.bankingAccounts.dto;
 
+import java.math.BigDecimal;
+
 public class TransferDto {
     private long senderId;
     private long recipientId;
-    private double transferAmount;
+    private BigDecimal transferAmount;
     private String pinCode;
 
     public long getSenderId() {
@@ -14,7 +16,7 @@ public class TransferDto {
         return recipientId;
     }
 
-    public double getTransferAmount() {
+    public BigDecimal getTransferAmount() {
         return transferAmount;
     }
 

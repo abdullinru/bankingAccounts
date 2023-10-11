@@ -1,15 +1,17 @@
 package com.github.abdullinru.bankingAccounts.dto;
 
+import java.math.BigDecimal;
+
 public class RequestAccountDto {
     private String name;
-    private double balance;
+    private BigDecimal balance;
     private String pinCode;
 
     public String getName() {
         return name;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 

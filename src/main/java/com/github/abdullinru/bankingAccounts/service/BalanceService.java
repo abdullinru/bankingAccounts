@@ -9,6 +9,8 @@ import com.github.abdullinru.bankingAccounts.model.Account;
 import com.github.abdullinru.bankingAccounts.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class BalanceService {
     private final AccountRepository accountRepository;
@@ -23,14 +25,14 @@ public class BalanceService {
         Account findAccount = accountRepository
                 .findById(depositDto.getAccountId())
                 .orElseThrow(() -> new AccountNotFoundException("account is not found"));
-        findAccount.setBalance(findAccount.getBalance() + depositDto.getAmount());
+        findAccount.setBalance(findAccount.getBalance().add(depositDto.getAmount()));
         accountRepository.save(findAccount);
         ResponseAccountDto response = mapper.toResponseAccountDto(findAccount);
         return response;
     }
 
-    private void chechAmount(double amount) {
-        if (amount < 0) {
+    private void chechAmount(BigDecimal amount) {
+        if (amount.signum() == -1) {
             throw new IllegalArgumentException("incorrect value of deposit");
         }
     }
@@ -43,10 +45,10 @@ public class BalanceService {
                 .orElseThrow(() -> new AccountNotFoundException("Account is not found"));
 
         comparePinCodes(withdrawDto.getPinCode(), findAccount.getPinCode());
-        if (findAccount.getBalance() < withdrawDto.getAmount()) {
+        if (findAccount.getBalance().compareTo(withdrawDto.getAmount()) < 0) {
             throw new IllegalArgumentException("not enouht money for withdraw");
         }
-        findAccount.setBalance(findAccount.getBalance() - withdrawDto.getAmount());
+        findAccount.setBalance(findAccount.getBalance().subtract(withdrawDto.getAmount()));
         accountRepository.save(findAccount);
         ResponseAccountDto response = mapper.toResponseAccountDto(findAccount);
         return response;

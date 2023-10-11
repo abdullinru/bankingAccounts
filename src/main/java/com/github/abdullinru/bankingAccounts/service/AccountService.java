@@ -6,6 +6,7 @@ import com.github.abdullinru.bankingAccounts.model.Account;
 import com.github.abdullinru.bankingAccounts.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -39,8 +40,8 @@ public class AccountService {
         }
     }
 
-    private void checkBalance(double balance) {
-        if (balance < 0) {
+    private void checkBalance(BigDecimal balance) {
+        if (balance.signum() == -1) {
             throw new IllegalArgumentException("Balance is less then 0");
         }
     }
