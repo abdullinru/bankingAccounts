@@ -1,4 +1,4 @@
-package com.github.abdullinru.bankingAccounts.exceptionHandler;
+package com.github.abdullinru.bankingAccounts.controller.controllerAdvice;
 
 import com.github.abdullinru.bankingAccounts.exception.AccountNotFoundException;
 import org.springframework.http.HttpStatus;

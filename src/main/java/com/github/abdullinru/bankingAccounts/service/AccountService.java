@@ -23,18 +23,11 @@ public class AccountService {
         this.mapper = mapper;
     }
 
-    public List<ResponseAccountDto> getAllAccounts(int page, int size) {
-        checkPageAndSize(page, size);
-        PageRequest pageRequest = PageRequest.of(page-1, size);
-        List<Account> accounts = accountRepository.findAll(pageRequest).getContent();
+    public List<ResponseAccountDto> getAllAccounts() {
+
+        List<Account> accounts = accountRepository.findAll();
 
         return mapper.toListResponseAccountDto(accounts);
-    }
-
-    private void checkPageAndSize(int page, int size) {
-        if (page <= 0 || size <= 0) {
-            throw new IllegalArgumentException("incorrect value page or size");
-        }
     }
 
     public ResponseAccountDto createAccount(RequestAccountDto accountDto) {

@@ -28,8 +28,8 @@ public class AccountController {
                             schema = @Schema(implementation = ResponseAccountDto.class))),
             @ApiResponse(responseCode = "400", description = "illegal arguments")})
     @GetMapping
-    public List<ResponseAccountDto> getAllAccounts(@RequestParam int page, @RequestParam int size) {
-        return accountService.getAllAccounts(page, size);
+    public List<ResponseAccountDto> getAllAccounts() {
+        return accountService.getAllAccounts();
     }
 
     @Operation(summary = "Создать новый аккаунт",
