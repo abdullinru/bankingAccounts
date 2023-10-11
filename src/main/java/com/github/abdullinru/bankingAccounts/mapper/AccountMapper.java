@@ -13,7 +13,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
 
-    //AccountMapper INSTANCE = Mappers.getMapper(AccountMapper.class);
     @Mapping(source = "name", target = "name")
     @Mapping(source = "balance", target = "balance")
     @Mapping(source = "pinCode", target = "pinCode")
