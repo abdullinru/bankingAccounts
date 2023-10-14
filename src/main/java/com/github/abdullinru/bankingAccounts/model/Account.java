@@ -18,6 +18,13 @@ public class Account {
 
     }
 
+    public Account(Long id, String name, BigDecimal balance, String pinCode) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+        this.pinCode = pinCode;
+    }
+
     public long getId() {
         return id;
     }
@@ -48,5 +55,15 @@ public class Account {
 
     public void setPinCode(String pinCode) {
         this.pinCode = pinCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                ", pinCode='" + pinCode + '\'' +
+                '}';
     }
 }
