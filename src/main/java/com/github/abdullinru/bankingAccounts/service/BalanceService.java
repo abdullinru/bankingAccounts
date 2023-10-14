@@ -21,11 +21,11 @@ public class BalanceService {
         this.mapper = mapper;
     }
     public ResponseAccountDto deposit(DepositDto depositDto) {
-        chechAmount(depositDto.getAmount());
+        chechAmount(depositDto.amount());
         Account findAccount = accountRepository
-                .findById(depositDto.getAccountId())
+                .findById(depositDto.accountId())
                 .orElseThrow(() -> new AccountNotFoundException("account is not found"));
-        findAccount.setBalance(findAccount.getBalance().add(depositDto.getAmount()));
+        findAccount.setBalance(findAccount.getBalance().add(depositDto.amount()));
         accountRepository.save(findAccount);
         ResponseAccountDto response = mapper.toResponseAccountDto(findAccount);
         return response;
@@ -38,17 +38,17 @@ public class BalanceService {
     }
 
     public ResponseAccountDto withdraw(WithdrawDto withdrawDto) {
-        chechAmount(withdrawDto.getAmount());
-        checkPin(withdrawDto.getPinCode());
+        chechAmount(withdrawDto.amount());
+        checkPin(withdrawDto.pinCode());
         Account findAccount = accountRepository
-                .findById(withdrawDto.getAccountId())
+                .findById(withdrawDto.accountId())
                 .orElseThrow(() -> new AccountNotFoundException("Account is not found"));
 
-        comparePinCodes(withdrawDto.getPinCode(), findAccount.getPinCode());
-        if (findAccount.getBalance().compareTo(withdrawDto.getAmount()) < 0) {
+        comparePinCodes(withdrawDto.pinCode(), findAccount.getPinCode());
+        if (findAccount.getBalance().compareTo(withdrawDto.amount()) < 0) {
             throw new IllegalArgumentException("not enouht money for withdraw");
         }
-        findAccount.setBalance(findAccount.getBalance().subtract(withdrawDto.getAmount()));
+        findAccount.setBalance(findAccount.getBalance().subtract(withdrawDto.amount()));
         accountRepository.save(findAccount);
         ResponseAccountDto response = mapper.toResponseAccountDto(findAccount);
         return response;

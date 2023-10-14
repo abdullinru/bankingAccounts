@@ -26,8 +26,8 @@ public class AccountService {
     }
 
     public ResponseAccountDto createAccount(RequestAccountDto accountDto) {
-        checkBalance(accountDto.getBalance());
-        checkPin(accountDto.getPinCode());
+        checkBalance(accountDto.balance());
+        checkPin(accountDto.pinCode());
         Account createAccount = mapper.toAccount(accountDto);
         accountRepository.save(createAccount);
         ResponseAccountDto response = mapper.toResponseAccountDto(createAccount);
