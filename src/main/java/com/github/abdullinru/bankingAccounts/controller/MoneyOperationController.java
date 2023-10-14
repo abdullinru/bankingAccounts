@@ -4,7 +4,6 @@ import com.github.abdullinru.bankingAccounts.dto.DepositDto;
 import com.github.abdullinru.bankingAccounts.dto.ResponseAccountDto;
 import com.github.abdullinru.bankingAccounts.dto.TransferDto;
 import com.github.abdullinru.bankingAccounts.dto.WithdrawDto;
-import com.github.abdullinru.bankingAccounts.service.AccountService;
 import com.github.abdullinru.bankingAccounts.service.BalanceService;
 import com.github.abdullinru.bankingAccounts.service.TransferService;
 import io.swagger.v3.oas.annotations.Operation;
