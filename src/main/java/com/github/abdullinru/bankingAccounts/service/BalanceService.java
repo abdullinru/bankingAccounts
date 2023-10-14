@@ -7,6 +7,8 @@ import com.github.abdullinru.bankingAccounts.exception.AccountNotFoundException;
 import com.github.abdullinru.bankingAccounts.mapper.AccountMapper;
 import com.github.abdullinru.bankingAccounts.model.Account;
 import com.github.abdullinru.bankingAccounts.repository.AccountRepository;
+import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ public class BalanceService {
         this.mapper = mapper;
     }
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Lock(LockModeType.PESSIMISTIC_READ)
     public ResponseAccountDto deposit(DepositDto depositDto) {
         chechAmount(depositDto.amount());
         Account findAccount = accountRepository
@@ -41,6 +44,7 @@ public class BalanceService {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Lock(LockModeType.PESSIMISTIC_READ)
     public ResponseAccountDto withdraw(WithdrawDto withdrawDto) {
         chechAmount(withdrawDto.amount());
         checkPin(withdrawDto.pinCode());

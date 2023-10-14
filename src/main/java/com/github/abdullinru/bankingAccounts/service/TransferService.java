@@ -5,6 +5,8 @@ import com.github.abdullinru.bankingAccounts.dto.ResponseAccountDto;
 import com.github.abdullinru.bankingAccounts.dto.TransferDto;
 import com.github.abdullinru.bankingAccounts.dto.WithdrawDto;
 import com.github.abdullinru.bankingAccounts.mapper.TransferMapper;
+import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,7 @@ public class TransferService {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Lock(LockModeType.PESSIMISTIC_READ)
     public ResponseAccountDto transfer(TransferDto transferDto) {
         WithdrawDto withdrawDto = mapper.toWithdrawDto(transferDto);
         balanceService.withdraw(withdrawDto);
