@@ -6,6 +6,7 @@ import com.github.abdullinru.bankingAccounts.dto.TransferDto;
 import com.github.abdullinru.bankingAccounts.dto.WithdrawDto;
 import com.github.abdullinru.bankingAccounts.mapper.TransferMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -18,7 +19,7 @@ public class TransferService {
         this.mapper = mapper;
     }
 
-    @Transactional
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public ResponseAccountDto transfer(TransferDto transferDto) {
         WithdrawDto withdrawDto = mapper.toWithdrawDto(transferDto);
         balanceService.withdraw(withdrawDto);

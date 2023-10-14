@@ -8,6 +8,8 @@ import com.github.abdullinru.bankingAccounts.mapper.AccountMapper;
 import com.github.abdullinru.bankingAccounts.model.Account;
 import com.github.abdullinru.bankingAccounts.repository.AccountRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -20,6 +22,7 @@ public class BalanceService {
         this.accountRepository = accountRepository;
         this.mapper = mapper;
     }
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public ResponseAccountDto deposit(DepositDto depositDto) {
         chechAmount(depositDto.amount());
         Account findAccount = accountRepository
@@ -37,6 +40,7 @@ public class BalanceService {
         }
     }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public ResponseAccountDto withdraw(WithdrawDto withdrawDto) {
         chechAmount(withdrawDto.amount());
         checkPin(withdrawDto.pinCode());
