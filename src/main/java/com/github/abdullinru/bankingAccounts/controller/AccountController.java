@@ -2,6 +2,8 @@ package com.github.abdullinru.bankingAccounts.controller;
 
 import com.github.abdullinru.bankingAccounts.dto.*;
 import com.github.abdullinru.bankingAccounts.service.AccountService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -39,8 +41,9 @@ public class AccountController {
                             schema = @Schema(implementation = ResponseAccountDto.class))),
             @ApiResponse(responseCode = "400", description = "illegal arguments")})
     @PostMapping
-    public ResponseAccountDto createAccount(@RequestBody RequestAccountDto accountDto) {
-        return accountService.createAccount(accountDto);
+    public ResponseEntity<ResponseAccountDto> createAccount(@RequestBody RequestAccountDto accountDto) {
+        ResponseAccountDto result = accountService.createAccount(accountDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
 }
